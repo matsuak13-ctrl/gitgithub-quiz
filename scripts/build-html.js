@@ -21,6 +21,9 @@ const categories = data.categories.map((c) => {
 
 const dataJson = JSON.stringify(categories).replace(/<\/script/gi, "<\\/script");
 
+const totalQuestions = categories.reduce((s, c) => s + c.questions.length, 0);
+const pageSub = `${categories.length}カテゴリ・全${totalQuestions}問。選んで、確かめて、次へ進みます。`;
+
 const html = `<title>Git・GitHub学習クイズ</title>
 <style>
   @font-face { font-family: "system-mono"; src: local("SF Mono"); }
@@ -526,7 +529,7 @@ const html = `<title>Git・GitHub学習クイズ</title>
     let html = '';
     html += '<div class="topbar"><div class="brand"><span class="dot"></span><span class="mono">git log --learn</span></div></div>';
     html += '<h1 class="page-title">Git・GitHub 学習クイズ</h1>';
-    html += '<p class="page-sub">15カテゴリ × 各10問。選んで、確かめて、次へ進みます。</p>';
+    html += '<p class="page-sub">${pageSub}</p>';
 
     html += '<div class="stat-row">';
     html += '<div class="stat-tile"><div class="label">回答済み</div><div class="value mono">' + os.answered + ' <span style="font-size:13px;color:var(--ink-faint);font-weight:500;">/ ' + os.total + '</span></div></div>';

@@ -9,6 +9,13 @@ const ROOT = path.join(__dirname, "..");
 const data = JSON.parse(fs.readFileSync(path.join(ROOT, "data.json"), "utf-8"));
 const letters = ["ア", "イ", "ウ", "エ"];
 
+const totalQuestions = data.categories.reduce((s, c) => s + c.questions.length, 0);
+const counts = [...new Set(data.categories.map((c) => c.questions.length))];
+const subtitle =
+  counts.length === 1
+    ? `全${data.categories.length}カテゴリ × 各${counts[0]}問（4択・解説つき）`
+    : `全${data.categories.length}カテゴリ・全${totalQuestions}問（4択・解説つき）`;
+
 const children = [];
 
 // Title page
@@ -22,7 +29,7 @@ children.push(
   new Paragraph({
     alignment: AlignmentType.CENTER,
     spacing: { after: 200 },
-    children: [new TextRun({ text: "全15カテゴリ × 各10問（4択・解説つき）", size: 24, color: "555555" })]
+    children: [new TextRun({ text: subtitle, size: 24, color: "555555" })]
   }),
   new Paragraph({
     alignment: AlignmentType.CENTER,
