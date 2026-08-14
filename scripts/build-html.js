@@ -698,5 +698,5 @@ const html = `<title>Git・GitHub学習クイズ</title>
 </script>
 `;
 
-fs.writeFileSync(path.join(ROOT, "dist", "gitquiz_app.html"), html);
+fs.writeFileSync(path.join(ROOT, "dist", "index.html"), html);
 console.log("wrote", html.length, "bytes");
