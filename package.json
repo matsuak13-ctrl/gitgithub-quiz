@@ -2,7 +2,7 @@
   "name": "gitgithub-quiz",
   "version": "1.0.0",
   "private": true,
-  "description": "Git・GitHub学習クイズ（150問）— Word問題集とインタラクティブなWebクイズを data.json から生成する",
+  "description": "Git・GitHub学習クイズ（300問）— Word問題集とインタラクティブなWebクイズを data.json から生成する",
   "scripts": {
     "build:docx": "node scripts/build-docx.js",
     "build:html": "node scripts/build-html.js",
